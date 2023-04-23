@@ -1,0 +1,28 @@
+{
+  "name": "app-dev",
+  "build": {
+    "context": "..",
+    "dockerfile": "../Dockerfile"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.flake8",
+        "ms-python.black-formatter",
+        "matangover.mypy",
+        "ms-python.isort"
+      ],
+      "settings": {
+        "python.formatting.provider": "black",
+        "python.linting.mypyEnabled": true,
+        "python.linting.flake8Enabled": true,
+        "[python]": {
+          "editor.formatOnSave": true,
+          "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+          }
+        }
+      }
+    }
+  }
+}

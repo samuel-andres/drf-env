@@ -1,0 +1,35 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/src
+      - drf-env-static-data:/vol/web
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
+    environment:
+      - DB_HOST=db
+      - DB_NAME=drf-env_db
+      - DB_USER=drf-env_db_user
+      - DB_PASSWORD=drf-env_db_password
+      - DB_PORT=5432
+    depends_on:
+      - db
+    restart: on-failure
+
+  db:
+    image: postgres:15.2-alpine
+    ports:
+      - ":5432"
+    volumes:
+      - drf-env-db-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=drf-env_db
+      - POSTGRES_USER=drf-env_db_user
+      - POSTGRES_PASSWORD=drf-env_db_password
+
+volumes:
+  drf-env-db-data:
+  drf-env-static-data:

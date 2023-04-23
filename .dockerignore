@@ -1,0 +1,35 @@
+# Exclude unnecessary file types
+*.pyc
+*.pyo
+*.mo
+*.db
+*.egg-info
+*.sql.gz
+
+# Exclude development artifacts
+.cache
+.git
+.gitignore
+.dockerignore
+.flake8
+pyptoject.toml
+README.md
+
+# Exclude Python bytecode files
+**/__pycache__
+**/*.pyc
+
+# Exclude non-essential directories
+docs
+env
+venv
+.env
+.venv
+logs
+web/media
+web/static/CACHE
+stats
+
+# Exclude docker files
+Dockerfile
+docker-compose.yml
