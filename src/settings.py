@@ -9,7 +9,7 @@ sys.path.append(os.path.join(BASE_DIR, "src/apps"))
 
 SECRET_KEY = "django-insecure-^(v5*&yh373rx+3e@-l4m@@0%@frsa7q0vhd#33fatc5_i#kgp"
 DEBUG = True
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS: list[str] = []
 AUTH_USER_MODEL = "users.User"
 
 # Application definition
