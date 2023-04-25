@@ -1,13 +1,12 @@
 from auths.api.serializers import TokenObtainSerializer
-from django.contrib.auth import get_user_model
 from django.test import TestCase
+
+from core.factories.users_factories import UserFactory
 
 
 class TokenObtainSerializerTests(TestCase):
     def setUp(self):
-        self.user = get_user_model().objects.create_user(
-            email="testuser@email.com", username="testuser", password="testpassword"
-        )
+        self.user = UserFactory()
 
     def test_get_token_contains_username(self):
         serializer = TokenObtainSerializer()
