@@ -1,3 +1,4 @@
+from django.contrib.auth import password_validation
 from django.contrib.auth.models import (
     AbstractBaseUser,
     BaseUserManager,
@@ -14,6 +15,7 @@ class UserManager(BaseUserManager):
             raise ValueError(_("You must provide an email address"))
         email = self.normalize_email(email)
         user = self.model(email=email, **kwargs)
+        password_validation.validate_password(password)
         user.set_password(password)
         user.save()
         return user
@@ -25,7 +27,8 @@ class UserManager(BaseUserManager):
         return self.create_user(**kwargs)
 
 
-class User(AbstractBaseUser, PermissionsMixin):
+class User(AbstractBaseUser, PermissionsMixin):  # type: ignore
+    # https://github.com/typeddjango/django-stubs/issues/471
     email = models.EmailField(_("Email address"), unique=True)
     username = models.CharField(_("Username"), max_length=150, unique=True)
     first_name = models.CharField(_("First name"), max_length=150, blank=True)

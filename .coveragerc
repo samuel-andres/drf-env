@@ -5,3 +5,6 @@ omit =
     */settings.py
     */migrations/*
     */apps.py
+    */tests/*
+    */tests.py
+    */factories/*
