@@ -1,0 +1,7 @@
+[coverage:report]
+omit =
+    manage.py
+    */__init__.py
+    */settings.py
+    */migrations/*
+    */apps.py
